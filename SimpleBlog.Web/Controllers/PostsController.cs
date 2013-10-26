@@ -15,6 +15,5 @@ namespace SimpleBlog.Web.Controllers
         {
             return View();
         }
-
     }
 }

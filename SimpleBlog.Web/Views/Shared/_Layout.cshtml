@@ -1,0 +1,20 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>@ViewBag.Title - SimpleBlog</title>
+    </head>
+    <body>
+        
+        @RenderBody()
+        <footer>
+            &copy; @DateTime.UtcNow.Year - Jamie van Walsum
+        </footer>
+
+        @RenderSection("Scripts", false)
+    </body>
+</html>
