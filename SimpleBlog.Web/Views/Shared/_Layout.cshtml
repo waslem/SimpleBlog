@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("SimpleBlog", "Index", "Posts", null, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.RouteLink("Login","login")</li>
+                    <li>@Html.ActionLink("Posts","Index","Posts")</li>
+                    @if(User.Identity.IsAuthenticated && User.IsInRole("admin"))
+                    {
+                        <li>@Html.ActionLink("Admin", "Index","Posts",new { area = "admin"}, null)</li>
+                    }
+                </ul>
+                @if (User.Identity.IsAuthenticated)
+                {
+                     <p class="navbar-text navbar-right">
+                         Welcome, @User.Identity.Name | <a href="@Url.RouteUrl("logout")">Logout</a>
+                     </p>
+                }
+                else
+                {
+                    <p class="navbar-text navbar-right">
+                        <a href="@Url.RouteUrl("login")">Login</a>
+                    </p>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+    @RenderSection("Scripts", false)
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

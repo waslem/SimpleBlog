@@ -1,0 +1,21 @@
+﻿@model SimpleBlog.Web.ViewModels.AuthLogin
+
+@{
+    ViewBag.Title = "login";
+}
+
+@using (Html.BeginForm("Login", "Auth", null, FormMethod.Post, new { @class = "form", style="padding-top:50px" }))
+{
+    @Html.ValidationSummary()
+    <div class="form-group">
+        @Html.LabelFor(model => model.UserName)
+        @Html.TextBoxFor(model => model.UserName, new { @class = "form-control"})
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Password)
+        @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+     </div>
+    <div>
+        <button type="submit" value="Login" class="btn btn-default">Submit</button>
+    </div>
+}
