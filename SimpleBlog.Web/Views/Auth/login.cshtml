@@ -4,7 +4,7 @@
     ViewBag.Title = "login";
 }
 
-@using (Html.BeginForm("Login", "Auth", null, FormMethod.Post, new { @class = "form", style="padding-top:50px" }))
+@using (Html.BeginForm("Login", "Auth", null, FormMethod.Post, new { @class = "form" }))
 {
     @Html.ValidationSummary()
     <div class="form-group">
