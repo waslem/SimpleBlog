@@ -10,7 +10,6 @@ namespace SimpleBlog.Web.Controllers
     {
         //
         // GET: /Posts/
-
         public ActionResult Index()
         {
             return View();

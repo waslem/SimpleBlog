@@ -6,10 +6,10 @@ using System.Web.Mvc;
 
 namespace SimpleBlog.Web.Areas.Admin.Controllers
 {
-    public class PostsController : Controller
+    public class UsersController : Controller
     {
         //
-        // GET: /Admin/Posts/
+        // GET: /Admin/Users/
         public ActionResult Index()
         {
             return View();

@@ -12,19 +12,25 @@ namespace SimpleBlog.Web
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
+
+            // add the namespaces to the type of the simpleblog.web.controllers PostsController namespace.
+            // solves the conflict of postsController in the admin area and in the normal area
+            var namespaces = new[] { typeof(PostsController).Namespace };
+
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
                 name: "Login",
-                url: "login/{action}/{id}",
-                defaults: new {controller = "Auth", action = "Login", id = UrlParameter.Optional}
+                url: "login",
+                defaults: new {controller = "Auth", action = "Login", id = UrlParameter.Optional},
+                namespaces: namespaces
             );
 
             routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-                namespaces: new string[] {typeof (PostsController).Namespace}
+                name: "Home",
+                url: "",
+                defaults: new { controller = "Posts", action = "Index" },
+                namespaces: namespaces
             );
         }
     }
