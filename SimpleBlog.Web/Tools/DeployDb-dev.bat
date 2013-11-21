@@ -1,0 +1,1 @@
+..\..\packages\FluentMigrator.1.1.1.0\tools\Migrate.exe --db=SqlServer2008 --target=..\bin\simpleblog.web.dll --configPath=..\Web.config -c=MainDb
