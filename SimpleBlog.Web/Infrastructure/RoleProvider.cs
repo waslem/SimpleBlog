@@ -46,7 +46,8 @@ namespace SimpleBlog.Web.Infrastructure
 
         public override string[] GetRolesForUser(string username)
         {
-            return new[] { "admin" };
+            // return all the roles for the selected user and return as array of strings
+            return Auth.User.Roles.Select(role => role.Name).ToArray();
         }
 
         public override string[] GetUsersInRole(string roleName)

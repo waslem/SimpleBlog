@@ -28,6 +28,8 @@
         @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
         @Html.ValidationMessageFor(model => model.Password)
     </div>
+    
+    @Html.Partial("_RoleEditor", Model.Roles)
 
     <input type="submit" value="Create User" class="btn btn-primary" />
     <a href="@Url.Action("index")">or cancel</a>

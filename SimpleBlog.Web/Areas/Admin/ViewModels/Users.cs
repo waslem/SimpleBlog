@@ -12,6 +12,14 @@ namespace SimpleBlog.Web.Areas.Admin.ViewModels
         public IEnumerable<User> Users { get; set; }
     }
 
+    // simple data transfer object created here
+    public class RoleCheckBox
+    {
+        public int Id { get; set; }
+        public bool IsChecked { get; set; }
+        public string Name { get; set; }
+    }
+
     public class UsersNew
     {
         [Required]
@@ -26,6 +34,8 @@ namespace SimpleBlog.Web.Areas.Admin.ViewModels
         [MaxLength(256)]
         [DataType(dataType: DataType.EmailAddress)]
         public string Email { get; set; }
+
+        public IList<RoleCheckBox> Roles { get; set; }
     }
 
     public class UsersEdit
@@ -38,6 +48,8 @@ namespace SimpleBlog.Web.Areas.Admin.ViewModels
         [MaxLength(256)]
         [DataType(dataType: DataType.EmailAddress)]
         public string Email { get; set; }
+
+        public IList<RoleCheckBox> Roles { get; set; }
     }
 
     public class UsersResetPassword

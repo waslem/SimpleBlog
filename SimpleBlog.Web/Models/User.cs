@@ -20,6 +20,7 @@ namespace SimpleBlog.Web.Models
         public virtual string Username { get; set; }
         public virtual string Email { get; set; }
         public virtual string PasswordHash { get; set; }
+        public virtual IList<Role> Roles { get; set; }
 
         public virtual void SetPassword(string password)
         {
@@ -29,6 +30,11 @@ namespace SimpleBlog.Web.Models
         public virtual bool CheckPassword(string password)
         {
             return BCrypt.Net.BCrypt.Verify(password, PasswordHash);
+        }
+
+        public User()
+        {
+            Roles = new List<Role>();
         }
     }
 
@@ -48,6 +54,12 @@ namespace SimpleBlog.Web.Models
                     x.Column("password_hash");
                     x.NotNullable(true);
                 });
+
+            Bag(x => x.Roles, x =>
+                {
+                    x.Table("role_users");
+                    x.Key(k => k.Column("user_id"));
+                }, x => x.ManyToMany(k => k.Column("role_id"))); 
         }
     }
 }
