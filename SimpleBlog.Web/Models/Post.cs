@@ -43,11 +43,13 @@ namespace SimpleBlog.Web.Models
             Property(x => x.Slug, x => x.NotNullable(true));
             Property(x => x.Content, x => x.NotNullable(true));
 
-            Property(X => X.Created, X =>
+            Property(x => x.Created, x =>
                 {
-                    X.Column("created");
-                    X.NotNullable(true);
+                    x.Column("created");
+                    x.NotNullable(true);
                 });
+
+            Property(x => x.Deleted, x => x.Column("deleted"));
 
             Bag(x => x.Tags, x => 
                 {
